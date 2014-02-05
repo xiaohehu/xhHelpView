@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Fenway</key>
+	<array>
+		<dict>
+			<key>frame</key>
+			<string>100.0, 100.0, 200.0, 200.0</string>
+			<key>text</key>
+			<string>This is the help box 1</string>
+			<key>interaction</key>
+			<string>YES</string>
+		</dict>
+		<dict>
+			<key>frame</key>
+			<string>100.0, 700.0, 200.0, 200.0</string>
+			<key>text</key>
+			<string>This is the help box 2</string>
+			<key>interaction</key>
+			<string>NO</string>
+		</dict>
+	</array>
+	<key>Building</key>
+	<array/>
+</dict>
+</plist>
