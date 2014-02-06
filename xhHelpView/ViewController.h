@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import "xhHelpView.h"
+@interface ViewController : UIViewController <xhHelpViewDelegate>
 
 @end

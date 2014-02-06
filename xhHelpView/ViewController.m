@@ -8,9 +8,9 @@
 
 #import "ViewController.h"
 #import "xhHelpView.h"
-#import "xhHelpData.h"
+
 @interface ViewController ()
-@property (nonatomic, strong) xhHelpData        *recieveData;
+@property (nonatomic, strong) NSMutableArray       *arr_helpViews;
 @end
 
 @implementation ViewController
@@ -18,58 +18,73 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    xhHelpView *helpView = [[xhHelpView alloc] initWithFrame:CGRectZero];
-    helpView.helpName = @"Fenway";
-    helpView.backgroundColor = [UIColor greenColor];
-    UIView *detailView = [[UIView alloc] initWithFrame:self.view.bounds];
-    detailView.backgroundColor = [UIColor yellowColor];
-    helpView.uiv_detailInfo = detailView;
-    [self.view addSubview: helpView];
+    _arr_helpViews = [[NSMutableArray alloc] init];
     
-    xhHelpView *helpView2 = [[xhHelpView alloc] initWithFrame:CGRectZero];
-    helpView2.helpName = @"Building";
+	// Do any additional setup after loading the view, typically from a nib.
+    xhHelpView *helpView1 = [[xhHelpView alloc] initWithFrame:CGRectMake(100.0, 100.0, 200.0, 200.0)];
+    helpView1.isTappable = YES;
+    helpView1.dictKey = @"Fenway";
+    helpView1.delegate = self;
+    helpView1.backgroundColor = [UIColor redColor];
+    [self.view addSubview: helpView1];
+    [_arr_helpViews addObject: helpView1];
+    
+    xhHelpView *helpView2 = [[xhHelpView alloc] initWithFrame:CGRectMake(500.0, 100.0, 200.0, 200.0)];
+    helpView2.isTappable = NO;
+    helpView2.dictKey = @"Building";
+    helpView2.delegate = self;
     helpView2.backgroundColor = [UIColor greenColor];
     [self.view addSubview: helpView2];
-//    [self addHelpBox];
+    [_arr_helpViews addObject: helpView2];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHelpBoxData:) name:@"emailData" object:nil];
-//    [self addHelpBox];
+    xhHelpView *helpView3 = [[xhHelpView alloc] initWithFrame:CGRectMake(100.0, 500.0, 200.0, 200.0)];
+    helpView3.isTappable = YES;
+    helpView3.dictKey = @"Location";
+    helpView3.delegate = self;
+    helpView3.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview: helpView3];
+    [_arr_helpViews addObject: helpView3];
+
+    [self initControlBtn];
 }
 
-//-(void)addHelpBox
-//{
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"helpBoxes" ofType:@"plist"];
-//    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-//    NSArray *arr_section = [[NSArray alloc] initWithArray:[dict objectForKey:@"Fenway"]];
-//    UIView *detailView = [[UIView alloc] initWithFrame:self.view.bounds];
-//    detailView.backgroundColor = [UIColor greenColor];
-//    for (int i = 0; i < [arr_section count]; i++) {
-//        xhHelpView *helpView = [[xhHelpView alloc] initWithFrame:CGRectZero];
-//        helpView.dict_helpBoxData = arr_section[i];
-//        helpView.uiv_detailInfo = detailView;
-//        [self.view addSubview:helpView];
-//    }
-//}
+-(void)initControlBtn
+{
+    UIButton *controlBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    controlBtn.frame = CGRectMake(700.0, 600.0, 140.0, 40.0);
+    [controlBtn setTitle:@"Control" forState:UIControlStateNormal];
+    controlBtn.backgroundColor = [UIColor blueColor];
+    [self.view addSubview: controlBtn];
+    [controlBtn addTarget:self action:@selector(hide_Unhide) forControlEvents:UIControlEventTouchDown];
+}
 
-//-(void)getHelpBoxData:(NSNotification *)pNorification
-//{
-//    _recieveData = (xhHelpData *)[pNorification object];
-//}
-//-(void)addHelpBox
-//{
-//    _recieveData = [[xhHelpData alloc] init];
-//    _recieveData.frame = @"100, 100, 200, 200";
-//    _recieveData.helpText = @"This is help Box 1";
-//    _recieveData.interaction = YES;
-//    xhHelpView *helpView = [[xhHelpView alloc] initWithFrame:CGRectZero];
-//    [helpView setIsTappable:_recieveData.interaction];
-//    helpView.frameValue = _recieveData.frame;
-//    helpView.str_helpText = _recieveData.helpText;
-////    helpView.isTappable = _recieveData.interaction;
-//    helpView.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:helpView];
-//}
+-(void)hide_Unhide
+{
+    for (xhHelpView *tmp in _arr_helpViews){
+        if (tmp.hidden) {
+            tmp.hidden = NO;
+        }
+        else
+        {
+            tmp.hidden = YES;
+        }
+    }
+}
+#pragma mark - Help View Delegate
+-(void)removeHelpView:(xhHelpView *)customView
+{
+    if ([_arr_helpViews count] == 1)
+    {
+        for (xhHelpView *tmp in _arr_helpViews) {
+            tmp.hidden = YES;
+        }
+    }
+    else if ([_arr_helpViews count] > 1)
+    {
+        return;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

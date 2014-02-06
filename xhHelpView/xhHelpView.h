@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class xhHelpView;
+@protocol xhHelpViewDelegate
+@optional
+-(void)removeHelpView:(xhHelpView *)customView;
+@end
+
 @interface xhHelpView : UIView <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) NSString          *helpName;
-@property (nonatomic, strong) NSString          *frameValue;
+@property (nonatomic, strong) NSString          *dictKey;
 @property (nonatomic)         BOOL              isTappable;
-//@property (nonatomic, strong) UIView            *uiv_detailView;
 @property (nonatomic, strong) UIView            *uiv_detailInfo;
 @property (nonatomic, strong) NSString          *str_helpText;
+@property (nonatomic, weak) id <xhHelpViewDelegate> delegate;
 
 -(void)setIsTappable:(BOOL)tappable;
 @end

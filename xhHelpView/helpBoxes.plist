@@ -4,21 +4,28 @@
 <dict>
 	<key>Fenway</key>
 	<dict>
-		<key>frame</key>
-		<string>100, 100, 200, 200</string>
 		<key>text</key>
-		<string>This is help Fenway</string>
-		<key>interaction</key>
-		<string>YES</string>
+		<string>This is Fenway</string>
+		<key>images</key>
+		<array>
+			<string>01.jpg</string>
+			<string>02.jpg</string>
+			<string>03.jpg</string>
+		</array>
 	</dict>
 	<key>Building</key>
 	<dict>
-		<key>frame</key>
-		<string>2, 2, 100, 100</string>
 		<key>text</key>
-		<string>Building</string>
-		<key>interaction</key>
-		<string>NO</string>
+		<string>This is Building</string>
+	</dict>
+	<key>Location</key>
+	<dict>
+		<key>text</key>
+		<string>This is Location</string>
+		<key>images</key>
+		<array>
+			<string>01.jpg</string>
+		</array>
 	</dict>
 </dict>
 </plist>
