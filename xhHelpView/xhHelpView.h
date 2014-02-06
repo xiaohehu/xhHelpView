@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSString          *frameValue;
 @property (nonatomic)         BOOL              isTappable;
 //@property (nonatomic, strong) UIView            *uiv_detailView;
-@property (nonatomic, strong) NSDictionary      *dict_helpBoxData;
 @property (nonatomic, strong) UIView            *uiv_detailInfo;
 @property (nonatomic, strong) NSString          *str_helpText;
 

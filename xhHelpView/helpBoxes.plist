@@ -3,25 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Fenway</key>
-	<array>
-		<dict>
-			<key>frame</key>
-			<string>100.0, 100.0, 200.0, 200.0</string>
-			<key>text</key>
-			<string>This is the help box 1</string>
-			<key>interaction</key>
-			<string>YES</string>
-		</dict>
-		<dict>
-			<key>frame</key>
-			<string>100.0, 700.0, 200.0, 200.0</string>
-			<key>text</key>
-			<string>This is the help box 2</string>
-			<key>interaction</key>
-			<string>NO</string>
-		</dict>
-	</array>
+	<dict>
+		<key>frame</key>
+		<string>100, 100, 200, 200</string>
+		<key>text</key>
+		<string>This is help Fenway</string>
+		<key>interaction</key>
+		<string>YES</string>
+	</dict>
 	<key>Building</key>
-	<array/>
+	<dict>
+		<key>frame</key>
+		<string>2, 2, 100, 100</string>
+		<key>text</key>
+		<string>Building</string>
+		<key>interaction</key>
+		<string>NO</string>
+	</dict>
 </dict>
 </plist>
